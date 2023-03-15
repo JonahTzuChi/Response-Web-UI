@@ -60,10 +60,12 @@ body {
 
 .content .input-panel #city{
     width: 400px;
+    color: tomato;
 }
 .content .controls input[type="button"]{
     background-color: chartreuse;
     color: black;
+    width: 200px;
 }
 .foot {
     margin-top: 30px;
