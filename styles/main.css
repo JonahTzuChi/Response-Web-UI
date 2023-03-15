@@ -59,7 +59,7 @@ body {
 }
 
 .content .input-panel #city{
-    width: 400px;
+    width: 300px;
     color: tomato;
 }
 .content .controls input[type="button"]{
