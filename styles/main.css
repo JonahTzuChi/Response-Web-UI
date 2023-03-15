@@ -61,6 +61,10 @@ body {
 .content .input-panel #city{
     width: 300px;
 }
+.content .controls input[type="button"]{
+    background-color: chartreuse;
+    color: black;
+}
 .foot {
     margin-top: 30px;
     border: 1px solid black;
