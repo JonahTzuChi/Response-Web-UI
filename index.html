@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="icon" type="image/x-icon" href="resources/favicon.png" />
+        <link rel="stylesheet" href="/styles/main.css" />
+        <script>
+            function init() {
+                document.getElementById("user-role").innerHTML = "admin";
+                document.getElementById("user-name").innerHTML = "jonah";
+            }
+        </script>
+    </head>
+    <body onload="init();">
+        <div class="main">
+            <div class="head">
+                <img src="resources/favicon.png" alt="Logo" class="logo" />
+                <span class="info user">
+                    <span id="user-role"> </span>
+                    &nbsp;|&nbsp;
+                    <span>
+                        <a
+                            href="https://github.com/JonahTzuChi/JS-Browser-TakePicture-UploadPicture"
+                            ><span id="user-name"></span
+                        ></a>
+                    </span>
+                    &nbsp; |&nbsp;
+                    <span>
+                        <a href="#">Logout</a>
+                    </span>
+                </span>
+                <span class="info contact">
+                    <span class="contact">Contact Us: </span>
+                    &nbsp;
+                    <span>
+                        <a href="https://github.com/JonahTzuChi">github</a>
+                    </span>
+                </span>
+            </div>
+            <br />
+            <div class="content">
+                <div class="panel" id="left">LEFT</div>
+                <div class="panel" id="right">RIGHT</div>
+            </div>
+            <div class="foot">Foot</div>
+        </div>
+    </body>
+</html>
