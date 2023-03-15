@@ -1,5 +1,5 @@
 body {
-    background-image: url(../resources/wallpaper_landscape.jpeg);
+    background-image: url(https://github.com/JonahTzuChi/Response-Web-UI/blob/main/resources/wallpaper_landscape.jpeg);
     background-size: cover;
     margin: 0;
 }
@@ -95,7 +95,7 @@ body {
 
 @media screen and (max-width: 500px) and (min-height: 600px){
     body{
-        background-image: url(../resources/wallpaper_portrait.jpeg);
+        background-image: url(https://github.com/JonahTzuChi/Response-Web-UI/blob/main/resources/wallpaper_portrait.jpeg);
         background-size: auto;
     }
     .content .panel{
