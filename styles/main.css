@@ -1,5 +1,6 @@
 body {
-    background-image: url(/resources/favicon.png);
+    background-image: url(resources/wallpaper_landscape.jpeg);
+    background-size: cover;
     margin: 0;
 }
 
@@ -43,47 +44,76 @@ body {
 
 .content .panel{
     position: relative;
-    background-color: blanchedalmond;
+    background-color: transparent;
     width: 512px;
     height: 384px;
-    border: 1px solid blue;
+}
+
+.content .panel #webcam{
+    width: 100%;
+    height: 100%;
 }
 
 .content .controls,
-.content .input-panel {
-    margin-top: 5px;
+.content .input-panel,
+.content .output-panel {
+    margin-top: 10px;
 }
 
 .content .input-panel input[type="text"]{
     width: 200px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+.content .input-panel #gender{
+    width: 100px;
+    border: none;
+}
+.content .input-panel #city{
+    margin-top: 5px;
+    width: 310px;
+    border: none;
+}
+.content .controls {
+    justify-content: center;
+    align-items: center;
 }
 
-.content .input-panel #city{
-    width: 300px;
-    color: tomato;
-}
 .content .controls input[type="button"]{
     background-color: chartreuse;
     color: black;
-    width: 200px;
-}
-.foot {
-    margin-top: 30px;
-    border: 1px solid black;
-}
-@media screen and (min-width: 600px){
-    .main {
-        border: 1px solid black;
-        background-color: aliceblue;
-    }
+    width: 100px;
+    display:inline-flex;
+    flex-direction: rows;
 }
 
-@media screen and (max-width: 500px){
+.content .output-panel {
+    height: 50px;
+    width: 80%;
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 500px) and (min-height: 600px){
+    body{
+        background-image: url(resources/wallpaper_portrait.jpeg);
+        background-size: auto;
+    }
     .content .panel{
         position: relative;
-        background-color: blanchedalmond;
         width: 320px;
         height: 240px;
-        border: 1px solid blue;
+    }
+
+    .content .controls input[type="button"]{
+        width: 100px;
+        display:flex;
+        flex-direction: column;
+        margin-top: 5px;
+    }
+
+    .content .output-panel {
+        height: 200px;
+        width: 80%;
+        border: 1px solid black;
     }
 }

@@ -7,23 +7,89 @@
         <title>Document</title>
         <link rel="icon" type="image/x-icon" href="resources/favicon.png" />
         <link rel="stylesheet" href="styles/main.css" />
+        <!--
+        medium  : https://medium.com/swlh/how-to-access-webcam-and-take-picture-with-javascript-b9116a983d78
+        github  : https://github.com/bensonruan/webcam-easy
+        npm     : https://www.npmjs.com/package/webcam-easy
+        This man save me a ton of work so I want to give credit to his work!
+    -->
+        <script
+            type="text/javascript"
+            src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"
+        ></script>
         <script>
+            let webcam;
             function init() {
                 document.getElementById("user-role").innerHTML = "admin";
                 document.getElementById("user-name").innerHTML = "jonah";
+                const webcamElement = document.getElementById("webcam");
+                const canvasElement = document.getElementById("canvas");
+                webcam = new Webcam(webcamElement, "environment", canvasElement, null); // leave the last parameters as null because I do not need the sound effect
+                setTimeout(start(), 1000);
+            }
+
+            function start() {
+                webcam
+                    .start()
+                    .then((result) => {
+                        console.log("webcam started");
+                    })
+                    .catch((err) => {
+                        console.error(err); // was console.log
+                    });
+            }
+
+            function snap() {
+                console.log("snap");
+                /*
+                One of the site guide me to convert it's type, 
+                But the output of this module is already in string type. 
+                We can check verify this with typeof(image).
+                One of our responsible when we integrate other's work into ours, 
+                is to verify and fix dependencies issue. 
+                */
+                let image = webcam.snap();
+                console.log(image);
+                const webcamElement = document.getElementById("webcam");
+                webcamElement.style.display = "none";
+                /*
+                Alright, so we can go ahead and save it to the browser's local storage with the code below. 
+                I still want to recommend the site even though it took a while to figure out I don't need a type conversion. 
+                In fact, many parts of my code is also from this site. 
+                Link: https://www.webmound.com/save-images-localstorage-javascript/#:~:text=Step%201%3A%20Get%20the%20image,setItem()%20method%20in%20JavaScript.
+                */
+                localStorage.setItem("image", image);
+                preview();
+            }
+            /*
+            Link: https://www.webmound.com/save-images-localstorage-javascript/#:~:text=Step%201%3A%20Get%20the%20image,setItem()%20method%20in%20JavaScript.
+            */
+            function preview() {
+                const image = localStorage.getItem("image");
+
+                const previewImage = document.getElementById("preview");
+
+                if (image) {
+                    previewImage.setAttribute("src", image);
+                } else {
+                    previewImage.setAttribute("src", "resources/logo.jpg");
+                }
+            }
+
+            function reset(){
+                window.location.reload();
             }
         </script>
     </head>
     <body onload="init();">
         <div class="main">
             <div class="head">
-                <img src="resources/favicon.png" alt="Logo" class="logo" />
+                <a href="home.html"><img src="resources/favicon.png" alt="Logo" class="logo" /></a>
                 <span class="info user">
                     <span id="user-role"> </span>
                     &nbsp;|&nbsp;
                     <span>
-                        <a
-                            href="https://github.com/JonahTzuChi"
+                        <a href="https://github.com/JonahTzuChi"
                             ><span id="user-name"></span
                         ></a>
                     </span>
@@ -42,9 +108,13 @@
             </div>
             <br />
             <div class="content">
-                <div class="panel">LEFT</div>
+                <div class="panel">
+                    <video id="webcam" autoplay playsinline></video>
+                    <canvas id="canvas" class="d-none" hidden></canvas>
+                    <img id="preview" />
+                </div>
                 <div class="input-panel">
-                    <input id="name" type="text" placeholder="name"/>
+                    <input id="name" type="text" placeholder="name" />
                     <select id="gender">
                         <option>Male</option>
                         <option>Female</option>
@@ -57,10 +127,15 @@
                     </select>
                 </div>
                 <div class="controls">
-                    <input type="button" onclick="fire();" value="SEND" />
+                    <input type="button" onclick="snap();" value="SNAP"/>
+                    <input type="button" onclick="send();" value="SEND" />
+                    <input type="button" onclick="reset();" value="RESET" />
+                </div>
+                <div class="output-panel">
+                    <span>Result:</span> <br />
+                    <span id="result"></span>
                 </div>
             </div>
-            <div class="foot">Foot</div>
         </div>
     </body>
 </html>
