@@ -79,6 +79,13 @@
             function reset(){
                 window.location.reload();
             }
+
+            function test(){
+                var w = window.innerWidth;
+                var h = window.innerHeight;
+
+                alert( w + " x " + h);
+            }
         </script>
     </head>
     <body onload="init();">
@@ -126,14 +133,15 @@
                         <option>Pahang</option>
                     </select>
                 </div>
-                <div class="controls">
-                    <input type="button" onclick="snap();" value="SNAP"/>
-                    <input type="button" onclick="send();" value="SEND" />
-                    <input type="button" onclick="reset();" value="RESET" />
-                </div>
                 <div class="output-panel">
                     <span>Result:</span> <br />
                     <span id="result"></span>
+                </div>
+                <div class="controls">
+                    <button type="button" onclick="snap();">SNAP</button>
+                    <button type="button" onclick="send();">SEND</button>
+                    <button type="button" onclick="reset();">RESET</button>
+                    <!--<button type="button" onclick="test();">Test</button>-->
                 </div>
             </div>
         </div>
