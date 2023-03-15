@@ -57,6 +57,10 @@ body {
 .content .input-panel input[type="text"]{
     width: 200px;
 }
+
+.content .input-panel #city{
+    width: 300px;
+}
 .foot {
     margin-top: 30px;
     border: 1px solid black;
